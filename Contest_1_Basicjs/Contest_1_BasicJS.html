@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Very Simple Quiz</title>
+    <style>
+        .welcome {
+            background-color: pink;
+        }
+        .quiz {
+            background-color: moccasin;
+        }
+        .enter {
+            background-color: rgb(181, 255, 249);
+        }
+    </style>
+</head>
+<body>
+
+<h2 class='welcome'>WELCOME TO QUIZ</h2>
+<button class='quiz'>Are you ready to answer quiz questions?</button>
+<h2></h2>
+<button class='enter' onclick="askQuestion()">ENTER</button>
+
+<script>
+    const questions = [
+        {
+            question: "4 + 5",
+            answer: "9"
+        },
+        {
+            question: "4 * 5",
+            answer: "20"
+        },
+        {
+            question: "25 - 5",
+            answer: "20"
+        },
+        {
+            question: "100 * 20",
+            answer: "2000"
+        },
+        {
+            question: "100 / 4",
+            answer: "25"
+        },
+        {
+            question: "56 * 3",
+            answer: "168"
+        },
+        {
+            question: "250 * 4",
+            answer: "1000"
+        },
+        {
+            question: "55 + 55",
+            answer: "110"
+        },
+        {
+            question: "33 / 3",
+            answer: "11"
+        },
+        {
+            question: "88 - 22",
+            answer: "66"
+        }
+    ];
+
+    let score = 0;
+    let currentQuestionNO = 0;
+
+    function askQuestion() {
+        const currentQuestion = questions[currentQuestionNO];
+        if (currentQuestion) {
+       const userAnswer = prompt(currentQuestion.question);
+         if (userAnswer  === currentQuestion.answer) {
+                
+                score += 1;
+                console.log("Correct!👍 ");
+            } else {
+               
+                score -= 2;
+                 console.log("Wrong!👎 ");
+            }
+            currentQuestionNO += 1;
+            if (currentQuestionNO < questions.length) {
+                askQuestion();
+            } else {
+                alert(`YOU SCORED: ${score}/${questions.length}`);
+                console.log(`YOU SCORED: ${score}/${questions.length}`);
+                if (score === 10) {
+                    alert(`Good Job 👏👏👏`);
+                } else {
+                    alert(`TRY AGAIN`);
+                }
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
