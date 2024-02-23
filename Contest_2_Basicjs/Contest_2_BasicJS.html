@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Time Travel Machine</h1>
+
+    <div>
+        <input type="number" maxlength="2" id="day" min="1" max="31" placeholder="Day">
+        <input type="number" maxlength="2" min="1" max="12" id="month" placeholder="Month">
+        <input type="number" maxlength="4" min="2000" max="2099" id="year" placeholder="Year">
+        <button id="submit" onclick="timeTravel()">Submit</button>
+    </div>
+
+    <script>
+        function timeTravel() {
+            // Get input values
+            const day = parseInt(document.getElementById('day').value, 10);
+            const month = parseInt(document.getElementById('month').value, 10);
+            const year = parseInt(document.getElementById('year').value, 10);
+
+            // Validate input
+            if (isNaN(year) || isNaN(month) || isNaN(day) ||
+                year < 2000 || year > 2099 ||
+                month < 1 || month > 12 ||
+                day < 1 || day > 31 ||
+                (month === 2 && (day > 28) && (year % 4 !== 0 || (year % 100 === 0 && year % 400 !== 0))) ||
+                (day === 31 && (month === 4 || month === 6 || month === 9 || month === 11))) {
+                alert("Invalid date. Please try again.");
+            } else {
+                // Format the date
+                const formattedDate = `${day}-${month}-${year}`;
+                alert(`The time machine has traveled to ${formattedDate}`);
+                console.log(`The time machine has traveled to ${formattedDate}`);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
